@@ -1,0 +1,46 @@
+<html>
+	<head>
+		<title>隐藏显示</title>
+		<meta charset="utf-8">
+		<style>
+			div{
+				float: left;margin:20px;
+			}
+			#div1{
+				width: 100px;
+				height: 100px;
+				background: yellow;
+			}
+			#div2{
+				width: 200px;
+				height: 300px;
+				background: red;
+				display: none;
+			}
+		</style>
+		<script type='text/javascript'>
+		//涉及到知识点为window.onload、document.getElementById、onmouseover、onmouseout、setTimeout、clearInterval
+		window.onload=function(){
+			var odiv1=document.getElementById('div1');
+			var odiv2=document.getElementById('div2');
+			var timer=null;
+			odiv1.onmouseover=odiv2.onmouseover=function(){
+				clearInterval(timer);
+				odiv2.style.display='block';
+			}
+			odiv1.onmouseout=odiv2.onmouseout=function(){
+				timer=setTimeout(function(){
+					odiv2.style.display='none';
+				},500)
+			}
+
+
+		};
+
+		</script>
+	</head>
+	<body>
+		<div id="div1"></div>
+		<div id="div2"></div>
+	</body>
+</html>
